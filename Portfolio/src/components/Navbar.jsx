@@ -1,91 +1,71 @@
-const App = () => {
-    const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'Products', path: '/' },
-        { name: 'Contact', path: '/' },
-        { name: 'About', path: '/' },
-    ];
+import { ArrowDownRight, Menu } from "lucide-react";
+import React, { useState } from "react";
 
-    const ref = React.useRef(null)
+const Navbar = () => {
+  const [showMenu, setShowMenu] = useState(false);
 
-    const [isScrolled, setIsScrolled] = React.useState(false);
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const links = [
+    { link: "About", section: "About me" },
+    { link: "Skills", section: "skills" },
+    { link: "Projects", section: "project" },
+    { link: "Contact", section: "contact" },
+  ];
 
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(ref.current.scrollTop > 10);
-        };
-        ref.current.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  return (
+    <header className="relative">
+      {/* Main navbar */}
+      <nav className="text-white py-5 px-6 mx-auto border-b border-cyan-100 max-w-[1300px] flex items-center justify-between">
+        <h1 className="text-2xl">Muhammad Saad</h1>
 
-    return (
-        <div ref={ref} className="h-88 md:h-64 overflow-y-scroll">
-            <p className="w-10 h-[500px]"></p>
-            <nav className={`fixed top-0 left-0 bg-indigo-500 w-full flex items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 z-50 ${isScrolled ? "bg-white/80 shadow-md text-gray-700 backdrop-blur-lg py-3 md:py-4" : "py-4 md:py-6"}`}>
+        {/* Desktop links */}
+        <ul className="hidden md:flex items-center gap-5">
+          {links.map((link, index) => (
+            <li key={index} className="text-sm group">
+              <a href="#" className="hover:text-cyan-300 transition">
+                {link.link}
+              </a>
+              <div className="w-0 h-0.5 bg-cyan-600 transition-all duration-200 group-hover:w-full"></div>
+            </li>
+          ))}
+        </ul>
 
-                {/* Logo */}
-                <a href="/" className="flex items-center gap-2">
-                    <img src={"https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoWhite.svg"} alt="logo" className={`h-9 ${isScrolled && "invert opacity-80"}`} />
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setShowMenu(!showMenu)}
+          className="block md:hidden"
+        >
+          <Menu size={28} />
+        </button>
+
+        {/* Desktop 'Hire me' button */}
+        <button className="hidden md:flex items-center gap-2 rounded-full bg-white text-black px-4 py-2 cursor-pointer hover:shadow-[0_4px_6px_rgba(0,0,0,0.5)] hover:scale-105 transition">
+          Hire me <ArrowDownRight className="w-5 h-5" />
+        </button>
+      </nav>
+
+      {/* Mobile dropdown */}
+      {showMenu && (
+        <div
+          className={`md:hidden absolute top-full left-0 w-full bg-white border-t border-cyan-100 transform transition-all duration-300 ease-in-out ${
+            showMenu
+              ? "translate-y-0 opacity-100"
+              : "-translate-y-full opacity-0"
+          }`}
+        >
+          <ul className="flex flex-col items-center gap-4 py-4">
+            {links.map((link, index) => (
+              <li key={index} className="text-sm group">
+                <a href="#" className="hover:text-cyan-300 transition">
+                  {link.link}
                 </a>
-
-                {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-4 lg:gap-8">
-                    {navLinks.map((link, i) => (
-                        <a key={i} href={link.path} className={`group flex flex-col gap-0.5 ${isScrolled ? "text-gray-700" : "text-white"}`}>
-                            {link.name}
-                            <div className={`${isScrolled ? "bg-gray-700" : "bg-white"} h-0.5 w-0 group-hover:w-full transition-all duration-300`} />
-                        </a>
-                    ))}
-                    <button className={`border px-4 py-1 text-sm font-light rounded-full cursor-pointer ${isScrolled ? 'text-black' : 'text-white'} transition-all`}>
-                        New Launch
-                    </button>
-                </div>
-
-                {/* Desktop Right */}
-                <div className="hidden md:flex items-center gap-4">
-                    <svg className={`h-6 w-6 text-white transition-all duration-500 ${isScrolled ? "invert" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                    </svg>
-                    <button className={`px-8 py-2.5 rounded-full ml-4 transition-all duration-500 ${isScrolled ? "text-white bg-black" : "bg-white text-black"}`}>
-                        Login
-                    </button>
-                </div>
-
-                {/* Mobile Menu Button */}
-                <div className="flex items-center gap-3 md:hidden">
-                    <svg onClick={() => setIsMenuOpen(!isMenuOpen)} className={`h-6 w-6 cursor-pointer ${isScrolled ? "invert" : ""}`} fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <line x1="4" y1="6" x2="20" y2="6" />
-                        <line x1="4" y1="12" x2="20" y2="12" />
-                        <line x1="4" y1="18" x2="20" y2="18" />
-                    </svg>
-                </div>
-
-                {/* Mobile Menu */}
-                <div className={`fixed top-0 left-0 w-full h-screen bg-white text-base flex flex-col md:hidden items-center justify-center gap-6 font-medium text-gray-800 transition-all duration-500 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
-                    <button className="absolute top-4 right-4" onClick={() => setIsMenuOpen(false)}>
-                        <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <line x1="18" y1="6" x2="6" y2="18" />
-                            <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                    </button>
-
-                    {navLinks.map((link, i) => (
-                        <a key={i} href={link.path} onClick={() => setIsMenuOpen(false)}>
-                            {link.name}
-                        </a>
-                    ))}
-
-                    <button className="border px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all">
-                        New Launch
-                    </button>
-
-                    <button className="bg-black text-white px-8 py-2.5 rounded-full transition-all duration-500">
-                        Login
-                    </button>
-                </div>
-            </nav>
+                <div className="w-0 h-0.5 bg-cyan-600 transition-all duration-200 group-hover:w-full"></div>
+              </li>
+            ))}
+          </ul>
         </div>
-    );
-}
+      )}
+    </header>
+  );
+};
+
+export default Navbar;

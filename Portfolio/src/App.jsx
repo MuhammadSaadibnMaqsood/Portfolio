@@ -1,14 +1,18 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+
+import { Hero } from './components/Hero';
 import Navbar from './components/Navbar'
 
 function App() {
   return (
     <>
-    <div className="h-[100vh] w-full bg-zinc-300">
+    <div className="h-[100vh] bg-gradient-to-b from-gray-950 via- to-cyan-800">
+      <div className=''>
       <Navbar/>
+      </div>
+      <div>
+        <Hero/>
+      </div>
+        
     </div>
     </>
   );
