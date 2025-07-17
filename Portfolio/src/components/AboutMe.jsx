@@ -8,6 +8,7 @@ import { SiExpress } from "react-icons/si";
 import { FaNodeJs } from "react-icons/fa";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { FaNode } from "react-icons/fa";
+import {Link} from 'react-scroll'
 
 const skills = [
   {
@@ -60,7 +61,7 @@ const AboutMe = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h1 className="text-blue-800 text-3xl md:text-5xl font-extrabold tracking-wide text-center md:text-left">
+          <h1 className="text-blue-800 pt-54 sm:pt-10 md:pt-0 text-3xl md:text-5xl font-extrabold tracking-wide text-center md:text-left">
             About Me
           </h1>
 
@@ -75,9 +76,13 @@ const AboutMe = () => {
             skills and am looking for opportunities to apply my knowledge in
             industry.
           </p>
-
-          <button
-            className="
+          <Link
+            to="projects"
+            smooth={true}
+            duration={500}
+          >
+            <button
+              className="
            bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-cyan-400 hover:to-blue-700
             shadow-lg shadow-cyan-800/50
             rounded-full 
@@ -85,9 +90,10 @@ const AboutMe = () => {
             transition-all duration-300 ease-in-out
             ml-auto md:ml-0 block
           "
-          >
-            Latest Projects
-          </button>
+            >
+              Latest Projects
+            </button>
+          </Link>
         </motion.div>
 
         {/* RIGHT COLUMN */}
@@ -114,7 +120,7 @@ const AboutMe = () => {
 
       {/* NOTE SECTION */}
       <motion.div
-      id="skills"
+        id="skills"
         className="max-w-4xl mx-auto px-4 py-12 space-y-4"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

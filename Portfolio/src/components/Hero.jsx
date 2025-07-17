@@ -151,7 +151,7 @@ export const Hero = () => {
           <div className=" sm:pt-0 md:pt-24 md:w-1/2 w-full flex justify-center items-center relative">
             {/* Animated Hexagon with spin */}
             <motion.div
-              className="absolute z-0 opacity-25 blur-md drop-shadow-[0_0_30px_cyan]"
+              className="absolute hidden md:bg-block z-0 opacity-25 blur-md drop-shadow-[0_0_30px_cyan]"
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, ease: "linear", duration: 12 }}
             >
