@@ -31,13 +31,13 @@ const projects = [
     link: "https://github.com/MuhammadSaadibnMaqsood/Ai-code-Reviewer",
     align: "right",
     image:
-      "https://doimages.nyc3.cdn.digitaloceanspaces.com/002Blog/AI%20Code%20Review%20Tools/Image%2010.png",
+      "https://images.prismic.io/hatica/659f883f7a5e8b1120d56eae_TopAItoolstohelpyouwithcodereviewsin2024-2-.jpg?auto=format%2Ccompress&rect=0%2C0%2C1800%2C1151&w=1200&h=767",
   },
 ];
 
 const Projects = () => {
   return (
-    <div id="project" className=" text-white w-full">
+    <div id="projects" className=" text-white w-full">
       <div className="max-w-6xl mx-auto px-4 py-16">
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide mb-12 text-center md:text-left">
           Projects

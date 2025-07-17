@@ -25,7 +25,7 @@ export const Hero = () => {
   };
 
   return (
-    <div className="">
+    <div id="hero" className="">
       <div className="bg-gradient-to-b from-gray-900 to-blue-900 min-h-[100vh] relative ">
         <div className="z-0 w-52 h-96 bg-gradient-to-b from-gray-950  to-blue-800 absolute top-16 rounded-r-full blur-xl animate-pulse"></div>
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 py-16 text-white flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
@@ -74,7 +74,9 @@ export const Hero = () => {
                 className="relative group"
               >
                 <a
-                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/MuhammadSaadibnMaqsood"
                   className="text-white hover:text-cyan-400 transition"
                 >
                   <Github className="cursor-pointer w-6 h-6" />
@@ -98,7 +100,9 @@ export const Hero = () => {
                 className="relative group"
               >
                 <a
-                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.linkedin.com/in/muhammad-saad-198567355/"
                   className="text-white hover:text-cyan-400 transition"
                 >
                   <Linkedin className="cursor-pointer w-6 h-6" />
@@ -122,7 +126,9 @@ export const Hero = () => {
                 className="relative group"
               >
                 <a
-                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://instagram.com/your-profile"
                   className="text-white hover:text-cyan-400 transition"
                 >
                   <Instagram className="cursor-pointer w-6 h-6" />

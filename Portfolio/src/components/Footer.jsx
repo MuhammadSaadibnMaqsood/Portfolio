@@ -1,110 +1,101 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, Instagram, Linkedin } from "lucide-react";
+import {Link} from 'react-scroll'
 
 const Footer = () => {
-  const [github, setGithub] = useState(false);
-  const [linkedin, setLinkedin] = useState(false);
-  const [insta, setInsta] = useState(false);
+  const [hovered, setHovered] = useState(null);
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+  const socialLinks = [
+    { name: "Github", icon: Github, href: "https://github.com/MuhammadSaadibnMaqsood" },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/muhammad-saad-198567355/",
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://instagram.com/your-profile",
+    },
+  ];
 
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.8 } },
-  };
-
-  const scaleIn = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } },
-  };
   return (
-    <div className="bg-gradient-to-b from-white to-cyan-50 py-10 px-4 text-blue-800 grid  grid-cols-1 sm:grid-cols-1 md:grid-cols-3">
-      <div className="mx-10">
-        <h2 className="text-2xl">Muhammad Saad</h2>
-        <p className="">
-          A MERN Full stack developer undergraduate in software enginnering
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <a className="pb-3" href="">About</a>
-        <a className="pb-3" href="">Skills</a>
-        <a className="pb-3" href="">Project</a>
-        <a className="pb-3" href="">Contact</a>
-      </div>
-
-      <div>
+    <div className="bg-gradient-to-br from-white via-cyan-50 to-white text-blue-900 px-6 py-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+        {/* About Section */}
         <motion.div
-          className="flex flex-col items-center gap-6 relative mt-4"
-          variants={fadeIn}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Github Icon */}
-          <div
-            onMouseOver={() => setGithub(true)}
-            onMouseOut={() => setGithub(false)}
-            className="relative group"
-          >
-            <a href="#" className="text-black hover:text-cyan-400 transition">
-              <Github className="cursor-pointer w-6 h-6" />
-            </a>
-            {github && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="absolute -top-9 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs rounded-full border border-cyan-500"
-              >
-                Github
-              </motion.div>
-            )}
-          </div>
-
-          {/* Linkedin Icon */}
-          <div
-            onMouseOver={() => setLinkedin(true)}
-            onMouseOut={() => setLinkedin(false)}
-            className="relative group"
-          >
-            <a href="#" className="text-black  hover:text-cyan-400 transition">
-              <Linkedin className="cursor-pointer w-6 h-6" />
-            </a>
-            {linkedin && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="absolute -top-9 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs rounded-full border border-cyan-500"
-              >
-                Linkedin
-              </motion.div>
-            )}
-          </div>
-
-          {/* Instagram Icon */}
-          <div
-            onMouseOver={() => setInsta(true)}
-            onMouseOut={() => setInsta(false)}
-            className="relative group"
-          >
-            <a href="#" className="text-black hover:text-cyan-400 transition">
-              <Instagram className="cursor-pointer w-6 h-6" />
-            </a>
-            {insta && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="absolute -top-9 left-1/2 -translate-x-1/2 px-3 py-1 bg-white text-black text-xs rounded-full border border-cyan-500"
-              >
-                Instagram
-              </motion.div>
-            )}
-          </div>
+          <h2 className="text-2xl font-bold text-cyan-600">Muhammad Saad</h2>
+          <p className="mt-2 text-sm">
+            MERN Full Stack Developer | Undergraduate Software Engineer <br />
+            Passionate about crafting scalable and modern web applications.
+          </p>
         </motion.div>
+
+        {/* Navigation Links */}
+        <motion.div
+          className="flex flex-col items-center md:items-start gap-2"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          {["About", "Skills", "Projects", "Contact"].map((item, idx) => (
+            <Link
+              key={idx}
+                to={item.toLocaleLowerCase()}
+                smooth={true}
+                duration={500}
+              className="hover:text-cyan-600 transition-colors"
+            >
+              {item}
+            </Link>
+          ))}
+        </motion.div>
+
+        {/* Social Icons */}
+        <motion.div
+          className="flex justify-center md:justify-end items-center gap-6 relative"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {socialLinks.map(({ name, icon: Icon, href }, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => setHovered(name)}
+              onMouseLeave={() => setHovered(null)}
+              className="relative group"
+            >
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black hover:text-cyan-500 transition"
+              >
+                <Icon className="w-6 h-6 cursor-pointer" />
+              </a>
+              {hovered === name && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-white border border-cyan-500 text-xs text-black rounded-full shadow"
+                >
+                  {name}
+                </motion.div>
+              )}
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Footer Bottom */}
+      <div className="text-center text-xs text-gray-600 mt-8">
+        &copy; {new Date().getFullYear()} Muhammad Saad. All rights reserved.
       </div>
     </div>
   );

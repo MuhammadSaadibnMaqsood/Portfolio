@@ -66,8 +66,8 @@ const ContactMe = () => {
           <div>
             {/* Image */}
             <motion.img
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               viewport={{ once: true }}
               className="w-full md:w-96 rounded-2xl shadow-lg"
@@ -88,8 +88,8 @@ const ContactMe = () => {
           </div>
           {/* Form Area */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true }}
             className="flex-1 max-w-xl w-full space-y-6"

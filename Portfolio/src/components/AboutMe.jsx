@@ -50,7 +50,7 @@ const skills = [
 
 const AboutMe = () => {
   return (
-    <div id="aboutme" className="bg-gradient-to-b from-white to-cyan-50 w-full">
+    <div id="about" className="bg-gradient-to-b from-white to-cyan-50 w-full">
       <div className="max-w-6xl mx-auto px-4 py-16 flex flex-col md:flex-row items-center justify-between gap-12">
         {/* LEFT COLUMN */}
         <motion.div
