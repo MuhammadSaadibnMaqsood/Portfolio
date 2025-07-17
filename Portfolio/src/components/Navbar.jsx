@@ -1,5 +1,7 @@
 import { ArrowDownRight, Menu } from "lucide-react";
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-scroll';
+
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -20,7 +22,7 @@ const Navbar = () => {
   }, []);
 
   const links = [
-    { link: "About", section: "About me" },
+    { link: "About", section: "aboutme" },
     { link: "Skills", section: "skills" },
     { link: "Projects", section: "project" },
     { link: "Contact", section: "contact" },
@@ -42,9 +44,9 @@ const Navbar = () => {
         <ul className="hidden md:flex items-center gap-5 text-white">
           {links.map((link, index) => (
             <li key={index} className="text-sm group">
-              <a href="#" className="hover:text-cyan-300 transition">
+              <link href="#" className="hover:text-cyan-300 transition">
                 {link.link}
-              </a>
+              </link>
               <div className="w-0 h-0.5 bg-cyan-600 transition-all duration-200 group-hover:w-full"></div>
             </li>
           ))}

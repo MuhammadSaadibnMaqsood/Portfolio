@@ -1,6 +1,9 @@
-import  AboutMe  from "./components/AboutMe";
+import AboutMe from "./components/AboutMe";
+import ContactMe from "./components/ContactMe";
+import Footer from "./components/Footer";
 import { Hero } from "./components/Hero";
 import Navbar from "./components/Navbar";
+import Projects from "./components/Projects";
 
 function App() {
   return (
@@ -14,8 +17,17 @@ function App() {
             <Hero />
           </div>
         </div>
-        <div className="bg-gray-200 h-[100vh]">
-            <AboutMe/>
+        <div className="bg-gradient-to-b from-white to-cyan-50">
+          <AboutMe />
+        </div>
+        <div className="bg-gradient-to-b from-gray-950 via- to-blue-900 ">
+          <Projects />
+        </div>
+        <div className="bg-gradient-to-b from-white to-cyan-50">
+          <ContactMe />
+        </div>
+        <div className="bg-gradient-to-b from-white to-cyan-50">
+          <Footer />
         </div>
       </div>
     </>

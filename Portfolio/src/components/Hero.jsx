@@ -168,9 +168,9 @@ export const Hero = () => {
           </div>
         </div>
         <div className="w-full h-7 bg-transparent text-white hidden sm:hidden md:flex  items-center justify-center ">
-                <div className="text-center  w-full"> Quick Learner</div>
-                <div className="text-center w-full">Team work</div>
-                <div className="text-center  w-full">Problem solver</div>
+          <div className="text-center  w-full"> Quick Learner</div>
+          <div className="text-center w-full">Team work</div>
+          <div className="text-center  w-full">Problem solver</div>
         </div>
 
         <div className="mt-0 hidden sm:-mt-16 md:mt-16 sm:flex items-center justify-center">
@@ -179,12 +179,12 @@ export const Hero = () => {
               window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
             }
             className="
-      bg-gradient-to-br from-blue-500 via-blue-700 to-blue-900
+    bg-blue-600 hover:bg-blue-500
       hover:from-cyan-400 hover:to-cyan-800
       shadow-lg shadow-cyan-800/50
       rounded-full
-      border
-      border-gray-700
+     
+  
       px-6 py-2
       text-lg font-semibold
       text-white
